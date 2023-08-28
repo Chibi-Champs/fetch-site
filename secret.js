@@ -1,1 +1,1 @@
-    const apiKey = "";
+    const apiKey = "https://mangaverse-api.p.rapidapi.com/manga/fetch";
