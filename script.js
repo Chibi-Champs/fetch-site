@@ -41,4 +41,4 @@ const fetchMang = async () => {
     }
 }
 
-console.log(fetchMang());
+console.log(fetchMang(), fetchChapter(), fetchImg());
