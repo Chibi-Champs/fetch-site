@@ -1,3 +1,2 @@
     const apiKey = "https://mangaverse-api.p.rapidapi.com/manga/fetch?page=1&genres=Shounen";
-    const ImagUrl = 'https://mangaverse-api.p.rapidapi.com/manga/image?id=6486b7937ae7cb74845df888';
-    const getChapters = "https://mangaverse-api.p.rapidapi.com/manga/chapter?id=6486b7547ae7cb74845df856"
+    const getChapters = "https://mangaverse-api.p.rapidapi.com/manga/chapter?id=647fed35c71c2c9122b318f8"

@@ -21,9 +21,9 @@ const fetchChapter = async () => {
 
 };
 
-const fetchImg = async () => {
+const fetchImg = async (id) => {
     try {
-	    const response = await fetch(ImagUrl, options);
+	    const response = await fetch(`https://mangaverse-api.p.rapidapi.com/manga/image?id=${id}`, options);
     	const result = await response.json();
 	    console.log(result);
     } catch (error) {
@@ -68,9 +68,12 @@ const displayManga = async () => {
 	    console.error(error);
     }
 }
+// fetchMang()
+// fetchChapter()
+fetchImg('647fedf7c71c2c9122b31939')
+// console.log(fetchChapter(), fetchImg(fetchMang().data[0].id))
 
+let chapter = document.querySelector('#chapter')
+let page = document.createElement('img')
 
 console.log(fetchChapter(), displayManga(), fetchImg());
-
-
-
