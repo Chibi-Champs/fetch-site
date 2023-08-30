@@ -1,13 +1,12 @@
-const fetchHandler = async (url) => {
-    try {
-	    const response = await fetch(url);
-	    // const result = await response.json();
-	    console.log(result);
-    } catch (error) {
-	    console.error(error);
-    }
 
-};
+const testRoute = async (url) => {
+     const response = await fetch(url)
+     const data = await response.json()
+     console.log('data:', data);
+   };
+   
+  
+   testRoute(mangaKey);
 
 const createMangaThumbnails = (thumbnail, title) => {
 	const ul = document.querySelector("#mangaList");
@@ -26,11 +25,11 @@ const createMangaThumbnails = (thumbnail, title) => {
 
 const displayManga = async () => {
     try {
-	    const response = await fetch(apiKey, options);
+	    const response = await fetch(mangaKey);
 	    const result = await response.json();
 	    let data = result.data
 	    for (let i = 0; i < data.length; i++) {
-	    	createMangaThumbnails(data[i].thumb, data[i].title)
+	    	createMangaThumbnails(data[i].images.jpg.image_url, data[i].title)
 	    	console.log(result);	
 	    }
     } catch (error) {
