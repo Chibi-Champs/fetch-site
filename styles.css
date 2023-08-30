@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+navbar {
+  border: 3px solid black;
+}
+
+section {
+    border: 3px solid black;
+}
+
+article {
+    border: 3px solid black;
+}
+
+#mangaList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mangaPreview {
+  width: calc(33.33% - 20px); 
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.previewH3 {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
