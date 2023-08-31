@@ -53,10 +53,9 @@ const displayManga = async () => {
     try {
 	    const response = await fetch(mangaKey);
 	    const result = await response.json();
-	    let data = result.data
-	    for (let i = 0; i < data.length; i++) {
-	    	createMangaThumbnails(data[i].images.jpg.image_url, data[i].title, data[i].mal_id, );	
-	    }
+	    let { data } = result
+	    data.forEach(
+	    	manga => createMangaThumbnails(manga.images.jpg.image_url, manga.title, manga.mal_id))
     } catch (error) {
 	    console.error(error);
     }
