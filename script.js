@@ -25,18 +25,43 @@ const createMangaThumbnails = (thumbnail, title, id) => {
 	
 	li.addEventListener('click', async e => {
 		try{
+			const res = await fetch(`${mangaKey}/${id}/reviews`)
 			const response = await fetch(`${mangaKey}/${id}`);
         	const info = await response.json();
-        	console.log(info.data.synopsis)
+        	const reviews = await res.json()
+        	console.log(reviews.data)
+        	
 			const closeButton = document.getElementById('closeDialog')
+			const closeReview = document.getElementById('closeReview')
+			
+			const reviewButton = document.getElementById('reviewButton')
+			const reviewDialog = document.getElementById('reviewDialog')
+			const review = document.getElementById('review')
+			
 			const dialog = document.getElementById('moreInfoDialog');
             const moreInfoText = document.getElementById('moreInfoText')
-            
+            const background = document.getElementById('background')
+            const title = document.getElementById('title')
+            const author = document.getElementById('author')
+
+            title.textContent = info.data.title
+            author.textContent = ''
+            info.data.authors.forEach(({ name }) => author.textContent += ` ${name}`)
             moreInfoText.textContent = info.data.synopsis;
             dialog.showModal()
+            background.textContent = info.data.background
             closeButton.addEventListener('click', () => {
                 dialog.close();
             });
+            
+            review.textContent = reviews.data[Math.floor(Math.random() * reviews.data.length)].review
+            reviewButton.addEventListener('click', e => {
+            	reviewDialog.showModal()
+            })
+            closeReview.addEventListener('click', () => {
+                reviewDialog.close();
+            });
+            
 		}catch (error) {
             console.error(error);
         }

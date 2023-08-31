@@ -17,8 +17,8 @@
     
     <section>
         <form>
-            <input type="text" name=""/>
-            <input type="submit" value="Submit"/>
+            <input type="search" name=""/>
+            <button>Search</button>
         </form>
     </section>
     
@@ -29,8 +29,17 @@
     </article>
     
     <dialog id="moreInfoDialog">
+        <h1 id='title'></h1>
+        <h2 id='author'></h2>
+        <p id='background'></p>
         <p id="moreInfoText"></p>
         <button id="closeDialog">Close</button>
+        <button id="reviewButton">Reviews</button>
+        <dialog id='reviewDialog'>
+            <p>Reviews</p>
+            <p id='review'></p>
+            <button id="closeReview">Close</button>
+        </dialog>
     </dialog>
 
     
