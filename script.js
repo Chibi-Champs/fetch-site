@@ -25,14 +25,14 @@ const createMangaThumbnails = (thumbnail, title, id) => {
 	
 	li.addEventListener('click', async e => {
 		try{
-			const response = await fetch(`${mangaKey}/${id}/moreinfo`);
+			const response = await fetch(`${mangaKey}/${id}`);
         	const info = await response.json();
-        	
+        	console.log(info.data.synopsis)
 			const closeButton = document.getElementById('closeDialog')
 			const dialog = document.getElementById('moreInfoDialog');
             const moreInfoText = document.getElementById('moreInfoText')
             
-            moreInfoText.textContent = info.data.moreinfo;
+            moreInfoText.textContent = info.data.synopsis;
             dialog.showModal()
             closeButton.addEventListener('click', () => {
                 dialog.close();
@@ -53,9 +53,10 @@ const displayManga = async () => {
     try {
 	    const response = await fetch(mangaKey);
 	    const result = await response.json();
-	    let { data } = result
-	    data.forEach(
-	    	manga => createMangaThumbnails(manga.images.jpg.image_url, manga.title, manga.mal_id))
+	    let data = result.data
+	    for (let i = 0; i < data.length; i++) {
+	    	createMangaThumbnails(data[i].images.jpg.image_url, data[i].title, data[i].mal_id);	
+	    }
     } catch (error) {
 	    console.error(error);
     }
