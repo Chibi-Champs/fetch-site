@@ -1,3 +1,6 @@
+body {
+    font-family: 'Pacifico', cursive;
+}
 navbar {
   border: 3px solid black;
 }
@@ -37,4 +40,18 @@ article {
   width: 100%;
   text-align: center;
   margin-top: 10px;
+}
+
+#moreInfoDialog {
+      border-radius: 30px;
+    text-align: center;
+    background-color: #B9D7EA;
+    background: linear-gradient(45deg, #A0C9DB 50%, #B9D7EA 50%);
+    width: 60%;
+}
+#reviewDialog {
+    border-radius: 30px;
+    text-align: center;
+    background-color: #D6E6F2;
+    width: 47%;
 }
