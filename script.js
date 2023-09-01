@@ -14,6 +14,9 @@ const createMangaThumbnails = (thumbnail, title, id) => {
 		try{
 			const response = await fetch(`${mangaKey}/${id}`);
         	const info = await response.json();
+        	console.log(info)
+        	const res = await fetch(`${mangaKey}/${id}/reviews`)
+            const reviews = await res.json()
         	
 			const closeButton = document.getElementById('closeDialog')
 			const closeReview = document.getElementById('closeReview')
@@ -27,7 +30,9 @@ const createMangaThumbnails = (thumbnail, title, id) => {
             const background = document.getElementById('background')
             const title = document.getElementById('title')
             const author = document.getElementById('author')
-
+            const popupImg = document.getElementById('popupImg')
+            
+            popupImg.src = info.data.images.jpg.large_image_url
             title.textContent = info.data.title
             author.textContent = ''
             info.data.authors.forEach(({ name }) => author.textContent += ` ${name}`)
@@ -40,8 +45,7 @@ const createMangaThumbnails = (thumbnail, title, id) => {
             });
             
             reviewButton.addEventListener('click', async e => {
-                const res = await fetch(`${mangaKey}/${id}/reviews`)
-                const reviews = await res.json()
+                
                 review.textContent = reviews.data[Math.floor(Math.random() * reviews.data.length)].review
             	reviewDialog.showModal()
             })
