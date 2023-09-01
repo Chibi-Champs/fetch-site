@@ -1,16 +1,3 @@
-
-const testRoute = async (url) => {
-     const response = await fetch(url)
-     const data = await response.json()
-     console.log('data:', data);
-   };
-   
-  
-   testRoute(mangaKey);
-
-
-
-
 const createMangaThumbnails = (thumbnail, title, id) => {
 	const ul = document.querySelector("#mangaList");
 	const li = document.createElement("li");
@@ -25,11 +12,8 @@ const createMangaThumbnails = (thumbnail, title, id) => {
 	
 	li.addEventListener('click', async e => {
 		try{
-			const res = await fetch(`${mangaKey}/${id}/reviews`)
 			const response = await fetch(`${mangaKey}/${id}`);
         	const info = await response.json();
-        	const reviews = await res.json()
-        	console.log(reviews.data)
         	
 			const closeButton = document.getElementById('closeDialog')
 			const closeReview = document.getElementById('closeReview')
@@ -50,12 +34,15 @@ const createMangaThumbnails = (thumbnail, title, id) => {
             moreInfoText.textContent = info.data.synopsis;
             dialog.showModal()
             background.textContent = info.data.background
+            
             closeButton.addEventListener('click', () => {
                 dialog.close();
             });
             
-            review.textContent = reviews.data[Math.floor(Math.random() * reviews.data.length)].review
-            reviewButton.addEventListener('click', e => {
+            reviewButton.addEventListener('click', async e => {
+                const res = await fetch(`${mangaKey}/${id}/reviews`)
+                const reviews = await res.json()
+                review.textContent = reviews.data[Math.floor(Math.random() * reviews.data.length)].review
             	reviewDialog.showModal()
             })
             closeReview.addEventListener('click', () => {
